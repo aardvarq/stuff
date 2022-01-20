@@ -22,6 +22,7 @@ def list(arg,data=get_data()):
     elif arg == "records":
         records = []
         artist = input('Artist name or "all" for all records: ')
+        print()
         if artist == "all":
             for record in data.values():
                 for i in record:
@@ -33,11 +34,11 @@ def list(arg,data=get_data()):
             else:
                 for record in data[artist]:
                     records.append(record)
-        for i in records:
+        for i in sorted(records):
             print(i)
-        print(f'========\nNumber of records: {len(records)}')
-        print(f'Artist: {artist}')
 
+        print(f'\n########\nArtist: {artist}')
+        print(f'Number of records: {len(records)}')
 
 def add(data=get_data()):
     artist = input('Artist name: ')
