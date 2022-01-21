@@ -10,12 +10,14 @@ def get_data(f=infile):
     data = json.load(raw)
     return data
 
-def list(arg,data=get_data()):
+def list(arg):
+    data = get_data()
     if arg == "artists":
         artists = []
         for artist in data.keys():
             artists.append(artist)
-            print(artist)
+            for i in sorted(artists):
+                print(i)
         print(f'========\nNumber of artists: {len(artists)}')
         exit(0)
     
@@ -40,7 +42,8 @@ def list(arg,data=get_data()):
         print(f'\n########\nArtist: {artist}')
         print(f'Number of records: {len(records)}')
 
-def add(data=get_data()):
+def add(arg):
+    data = get_data()
     artist = input('Artist name: ')
     record = input('Record name: ')
     if artist in data:
@@ -51,11 +54,13 @@ def add(data=get_data()):
     else:
         records = []
     records.append(record)
+
     data[artist] = records
     with open(infile,'w') as f:
         json.dump(data,f)
     
-def del_record(data=get_data()):
+def del_record():
+    data=get_data()
     artist = input('Artist name: ')
     record = input('Record name: ')
 
