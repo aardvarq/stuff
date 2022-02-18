@@ -16,8 +16,8 @@ def list(arg):
         artists = []
         for artist in data.keys():
             artists.append(artist)
-            for i in sorted(artists):
-                print(i)
+        for i in sorted(artists):
+            print(i)
         print(f'========\nNumber of artists: {len(artists)}')
         exit(0)
     
