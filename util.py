@@ -65,11 +65,11 @@ def del_record():
     record = input('Record name: ')
 
 def help():
-    print('Usage: add, remove, list')
+    print('Usage: [add, list] [artists, records]')
     
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
+    if len(sys.argv) in [1,2]:
         help()
         sys.exit()
     cmd = eval(sys.argv[1])
